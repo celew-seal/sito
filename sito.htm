@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>I sistemi di raccomandazione</title>
+  <link rel="stylesheet"href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Sistemi di raccomandazione</h1>
+  </header>
+
+  
+  <nav>
+  <div class="topnav">
+  <a href="sito.htm">Home</a>
+  <a href="privacy.htm">Privacy</a>
+  <a href="camere.htm">Camere d'eco</a>
+</div>
+</nav>
+
+  <main>
+
+    <h2>Che cosa sono?</h2>
+<p>I sistemi di raccomandazione sono algoritmi di machine learning che hanno lo scopo di calcolare suggerimenti “rilevanti” per gli utenti attraverso l’analisi dei loro interessi e comportamenti, o di quelli di utenti considerati simili. 
+Esistono diversi approcci a partire dai quali è possibile creare i sistemi di raccomandazione. </p>
+<p>Si basano sull’osservazione dei dati demografici, comportamentali e possono tenere in considerazione informazioni sia dirette dell’utente interessato, sia di community di amici o utenti affini. In generale si tratta di diversi punti di vista guidati tutti dal concetto della “pertinenza” dell’informazione da cercare rispetto ai gusti, alle esigenze e al comportamento storico dell’utente. In base a come la pertinenza viene percepita e calcolata  si possono dividere i sistemi di raccomandazione in tre categorie(macro-famiglie):</p>
+<ul>
+  <li>approccio collaborativo, calcola i suggerimenti tenendo conto delle valutazioni sui vari elementi (contenuti, prodotti, etc) lasciate da utenti simili; 
+</li>
+  <li>approccio content-based, basato sul contenuto, sulle caratteristiche di un elemento rispetto a quelle dell’utente, andando quindi a suggerire elementi simili come contenuti ad altri visti in precedenza dall’utente; 
+</li>
+  <li>approccio ibrido, un approccio combinato delle tecniche precedenti combinando,  un approccio basato sulle ricerche effettuate in precedenza dall’utente e su quelle effettuate da utenti con profili equiparabili al suo.
+</li>
+</ul>  
+<img src="https://orbyta.it/wp-content/uploads/2022/03/Immagine3-1.png" alt="schema" width="700" height="330">
+<h2>Approccio collaborativo: Collaborative Filtering Systems</h2>
+<p>I sistemi di raccomandazione collaborative filtering utilizzano le interazioni avvenute tra utenti e articoli in passato per costruire la cosiddetta matrice di interazione utenti-articoli e da questa estrarre i nuovi suggerimenti. Si basano sull’assunzione che queste interazioni siano sufficienti per riconoscere gli utenti e/o gli articoli simili fra loro e che si possano fare delle predizioni concentrandosi su queste similarità.</p>
+<p>La selezione dei suggerimenti si basa in primis sul tipo di elementi visti in precedenza dall’utente e sulle valutazioni (attraverso voti, feedback, like o quant’altro) che l’utente ha attribuito ad ogni elemento. Dando poi per assodato che utenti simili attribuiscono valutazioni simili, l’algoritmo fornisce all’utente come suggerimenti gli elementi a cui gli utenti “simili” hanno associato le valutazioni più alte. </p>
+<p>L’idea alla base di tale approccio è che i dati storici degli utenti siano sufficienti per fare una previsione, che non serva sapere altro per individuare i suggerimenti da proporre all’utente. </p>
+<p>Questa classe di metodi si divide a sua volta in due sottocategorie, in base alla tecnica utilizzata per individuare le similarità tra gli utenti e/o gli articoli: metodi memory-based e metodi model-based. I primi utilizzano direttamente i valori contenuti nella matrice di interazione utenti-articoli per ricercare “il vicinato” dell’utente o dell’articolo target, i secondi assumono che dai valori della matrice sia possibile estrarre un modello con cui effettuare le nuove predizioni. </p>
+<h2>Metodi memory-based</h2>
+<p>I metodi memory-based si possono a loro volta suddividere in metodi user-based e metodi item-based. </p>
+<p>I metodi user-based rappresentano gli utenti considerando le loro interazioni con gli articoli e sulla base di questo valutano la similarità tra un utente e l’altro. In generale, due utenti sono considerati simili se hanno interagito con tanti articoli allo stesso modo. Per fare una nuova raccomandazione ad un utente si cerca di identificare quelli con i “profili di interazione” più simili al suo, in modo tale da suggerirgli gli articoli più popolari tra il suo vicinato. </p>
+<p>I metodi item-based rappresentano gli articoli basandosi sulle interazioni che gli utenti hanno avuto con loro. Due articoli vengono considerati simili se la maggior parte degli utenti che ha interagito con entrambi lo ha fatto allo stesso modo. Per fare una nuova raccomandazione ad un utente, questi metodi cercano articoli simili a quelli con i quali l’utente ha interagito positivamente.</p>
+<h2>Metodi model-based</h2>
+<p>I metodi model-based si basano sull’assunzione che le interazioni tra articoli e utenti possano essere spiegate tramite un modello “nascosto”.</p>
+<p>Un esempio di algoritmo per l’estrazione del modello è la matrix-factorization, questo consiste sostanzialmente nella decomposizione della matrice di interazione utenti-articoli nel prodotto di due sottomatrici, una contenente la rappresentazione degli utenti e l’altra la rappresentazione degli articoli. Utenti simili in termini di preferenze e articoli simili in termini di caratteristiche avranno delle rappresentazioni simili nelle nuove matrici.</p>
+<h2>Approccio Content-based </h2>
+<p>L’approccio content-based consiglia all’utente alcuni elementi selezionati in base ad un confronto a livello di contenuto tra gli elementi e il profilo dell’utente: il contenuto di ogni elemento è, infatti, rappresentato come un insieme di metadati e descrittori, mentre il profilo utente, rappresentato con lo stesso tipo di termini, è costruito in modo dinamico analizzando il contenuto degli elementi visti dall’utente. 
+Per questo motivo i metodi di raccomandazione basati sul contenuto sono più vicini all’apprendimento automatico, nel senso che le funzionalità che vengono sviluppate per fare previsioni sono basate sui dati continuamente aggiornati degli utenti e degli articoli.  </p>
+<p>Nell’approccio content-based il problema di raccomandazione viene trattato come un problema di classificazione (predire se ad un utente possa piacere o meno un articolo) o di regressione (predire il voto che un utente assegnerebbe ad un articolo). In entrambi i casi il problema si può basare sulle features dell’utente (metodo item-centred), o sulle features dell’articolo (metodo user-centred). Nel primo caso si costruisce un modello per articolo cercando di capire qual è la probabilità che ad ogni utente piaccia quell’ articolo, nel secondo caso si costruisce un modello per utente per capire qual è la probabilità che a quell’utente piaccia gli articoli a disposizione. In alternativa si può anche valutare un modello che contenga sia le features degli utenti che quelle degli articoli.</p>
+   
+  </main>
+  <footer>
+    <p>Celeste Bosi 3B lsa as.2023/24</p>
+  </footer>
+</body>
+</html>
+
